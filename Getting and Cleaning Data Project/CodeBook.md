@@ -4,11 +4,11 @@ The run_analysis.R script retrieves and cleans the data from the dataset that is
 
 The following steps were taken:
 
-1. **Download the dataset**
+**1. Download the dataset**
 
 The dataset was downloaded from the course project site, with the files in the 'UCI HAR Dataset' folder.
 
-2. **Read the data into data tables.**
+**2. Read the data into data tables.**
 The following tables were created in the script:
 
 *features (from features.txt):* Has 561 rows and 2 columns.
@@ -35,7 +35,7 @@ Contains information about the subjects who were in the training set. Each subje
 *activities (activity_labels.txt):* Has 6 rows and 2 columns.
 This data set contains a list of all the activities performed by the participants and their corresponding labels.
 
-3. **Merge the training and test sets to create a single data set.**
+**3. Merge the training and test sets to create a single data set.**
 *x_set*: Has 10299 rows and 561 columns. Was created through using the **rbind()** function on 'x_train' and 'x_test'.
 
 *y_set*: Has 10299 rows and 1 column. Was created through using the **rbind()** function on 'y_train' and 'y_test'.
@@ -44,13 +44,13 @@ This data set contains a list of all the activities performed by the participant
 
 *merged_data*: Has 10299 rows and 563 columns. Was created through merging 'x_set', 'y_set' and 'subjects' using the **cbind()** function.
 
-4. **Extract only the measurements on the mean and standard deviation for each measurement.**
+**4. Extract only the measurements on the mean and standard deviation for each measurement.**
 *new_data:* Has 10299 rows and 88 columns. This data set was created through selecting the 'subject' and 'activity_label' columns as well as the columns that contain the string *"mean"* or *"std"*.
 
-5. **Use descriptive activity names to name the activities in the data set.**
+**5. Use descriptive activity names to name the activities in the data set.**
 The numbers in the 'activity_label' column were replaced with their corresponding descriptions. This was done through performing an inner join on the 'new_data' and 'activities' data tables.
 
-6. **Appropriately label the data set with descriptive variable names.**
+**6. Appropriately label the data set with descriptive variable names.**
 The following changes were made to the following strings present in the column names:
 
     - All "BodyBody" replaced with "Body"
@@ -68,5 +68,5 @@ The following changes were made to the following strings present in the column n
     - All "tBody" replaced with "TimeBody"
     - All "gravity" replaced with "Gravity"
 
-7. **Create a second, independent tidy data set with the average of each variable for each activity and each subject.**
+**7. Create a second, independent tidy data set with the average of each variable for each activity and each subject.**
 *tidy_data*: This data set was created through summarising 'joined_data' through taking the mean of each column after grouping the data by subject and activity. The table 'tidy_data' was then exported into the file 'TidyData.txt'.
